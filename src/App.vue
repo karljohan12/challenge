@@ -1,17 +1,44 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ShoppingBasket :mockData="foodObjects"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ShoppingBasket from './components/ShoppingBasket.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ShoppingBasket
+  },
+  data(){
+    return{
+      foodObjects: {}
+    }
+
+  },
+  methods:{
+    retrieveData(){
+    //mock api call
+      this.foodObjects = {
+         0: {
+            "id": "Tomato",
+            "price": 2
+          },
+           1:{"id": "Burger",
+            "price": 5
+          },
+           2:{"id":"Fish",
+            "price": 10
+          }
+    }
+
+   }
+  },
+  mounted() {
+    this.retrieveData()
   }
 }
 </script>
